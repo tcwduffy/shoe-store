@@ -3,5 +3,17 @@
      <body>
         <h1>Welcome to Tom's Shoe Store</h1>
         <a href="cart.html">View Shopping Cart</a>
+        <label>Havvies</label>
+        <button onClick="addToCart">Add to Cart</button>
+
+
+
+        <script>
+            function addToCart () {
+                localStorage.setItem("Cart", ["Havvies"])
+            }
+
+
+        </script>
     </body>
 </html>
