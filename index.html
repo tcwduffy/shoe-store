@@ -16,8 +16,12 @@
 
 
         <script>
+           
+            
             function addToCart (item) {
-                localStorage.setItem("Cart", [item])
+                const list = JSON.parse(localStorage.getItem("Cart") || "[]" )
+                list.push(item);
+                localStorage.setItem("Cart", JSON.stringify(list))
             }
 
 
