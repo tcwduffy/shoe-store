@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html>
     <body>
-        <h1>You have no items in your shopping cart</h1>
+        <h1 id="cartStatus">You have no items in your shopping cart</h1>
         <div id="cartContents"></div>
 
 
         <script>
             var cart = localStorage.getItem("Cart")
             document.getElementById("cartContents").textContent = cart;
+
+            if (cart) {
+                document.getElementById("cartStatus").textContent = "You have 1 item in your shopping cart"
+             } 
         </script>
     </body> 
 </html>
