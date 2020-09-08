@@ -2,7 +2,12 @@
 <html>
     <body>
         <h1>You have no items in your shopping cart</h1>
+        <div id="cartContents"></div>
 
 
+        <script>
+            var cart = localStorage.getItem("Cart")
+            document.getElementById("cartContents").textContent = cart;
+        </script>
     </body> 
 </html>
