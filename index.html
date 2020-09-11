@@ -1,21 +1,39 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Luke and Tom's Online Store</title>
+    </head>
      <body>
-        <h1>Welcome to Tom's Shoe Store</h1>
+
         <a href="cart.html">View Shopping Cart</a>
+        <link rel="stylesheet" href="style.css">
 
-        <div>
-            <label>Havvies</label>
-            <button onClick="addToCart('Havvies')">Add to Cart</button>
-        </div>  
+
+            
+        <div class="wrapper">
+
+            <div class="items"></div>
+                <div class="item">
+                    <br>
+                    <label>Havvies</label>
+                    <p>PRICE: £12.95</p>
+                    <button onClick="addToCart('Havvies')">Add to Cart</button>
+                    <br>
+                </div>  
         
-        <div>
-            <label>Thongs</label>
-            <button onClick="addToCart('Thongs')">Add to Cart</button>
-        </div> 
+                <div class="item">
+                    <br>
+                    <label>Thongs</label>
+                    <p>PRICE: £19.75</p>
+                    <button onClick="addToCart('Thongs')">Add to Cart</button>
+                    <br>
+                </div>    
 
+            </div> 
 
-        <script>
+        </div>  
+        <script type="text/javascript">
            
             
             function addToCart (item) {
@@ -26,7 +44,19 @@
 
 
 
+            const buttons = document.querySelectorAll('a');
+            buttons.forEach(btn => {
+                btn.addEventListener('click', function(e) {
 
+                    let x = e.client - e.target.offsetLeft;
+                    let y = e.client - e.target.offsetTop;
+
+                    let ripples = document.createElement('span');
+                    ripples.style.left = x + 'px';
+                    ripples.style.top = y + 'px';
+                    this.appendChild(ripples);
+                })
+            })
         </script>
     </body>
 </html>
