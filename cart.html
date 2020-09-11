@@ -6,10 +6,13 @@
 
 
         <script>
-            var cart = localStorage.getItem("Cart")
+            var cart = JSON.parse(localStorage.getItem("Cart") || "[]" )
             document.getElementById("cartContents").textContent = cart;
+            cart.length
 
-            if (cart) {
+            if (cart.length >= 2) {
+                document.getElementById("cartStatus").textContent = `You have ${cart.length} items in your shopping cart`
+             } else if (cart.length === 1) {
                 document.getElementById("cartStatus").textContent = "You have 1 item in your shopping cart"
              } 
         </script>
