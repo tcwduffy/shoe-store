@@ -9,13 +9,16 @@
         <script>
             var cart = JSON.parse(localStorage.getItem("Cart") || "[]" )
             document.getElementById("cartContents").textContent = cart;
-            cart.length
 
             if (cart.length >= 2) {
                 document.getElementById("cartStatus").textContent = `You have ${cart.length} items in your shopping cart`
              } else if (cart.length === 1) {
                 document.getElementById("cartStatus").textContent = "You have 1 item in your shopping cart"
              } 
+
+             // split list into multiple arrays
+             // count length of each array
+             // show array with numbers
         </script>
     </body> 
 </html>

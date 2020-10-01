@@ -34,9 +34,22 @@
 
         </div>  
         <script type="text/javascript">
-           
-            
+                  
+
+            var numberOfItemsHavvies = 0;
+            var numberOfItemsThongs = 0;
+
             function addToCart (item) {
+ 
+                
+                if (item === 'Havvies') {
+                    numberOfItemsHavvies++
+                } else {
+                    numberOfItemsThongs++
+                } 
+
+                console.log('Havvies', numberOfItemsHavvies);
+                console.log('Thongs', numberOfItemsThongs);
                 const list = JSON.parse(localStorage.getItem("Cart") || "[]" )
                 list.push(item);
                 localStorage.setItem("Cart", JSON.stringify(list))
