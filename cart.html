@@ -2,23 +2,29 @@
 <html>
     <body>
         <h1 id="cartStatus">You have no items in your shopping cart</h1>
-        <div id="cartContents"></div>
+        <div id="cartContentsList"></div>
         <a href="index.html">Continue Shopping</a>
-
 
         <script>
             var cart = JSON.parse(localStorage.getItem("Cart") || "[]" )
-            document.getElementById("cartContents").textContent = cart;
+
+            const ul = document.createElement("ul")
+            
+            for (var i = 0; i < cart.length; i++) {
+                var li = document.createElement("li")
+                li.textContent = cart[i];
+                ul.appendChild(li)
+            }
+
+            document.getElementById("cartContentsList").appendChild(ul)
 
             if (cart.length >= 2) {
                 document.getElementById("cartStatus").textContent = `You have ${cart.length} items in your shopping cart`
              } else if (cart.length === 1) {
                 document.getElementById("cartStatus").textContent = "You have 1 item in your shopping cart"
-             } 
+             }
 
-             // split list into multiple arrays
-             // count length of each array
-             // show array with numbers
+             //group items together with quantity
         </script>
     </body> 
 </html>
