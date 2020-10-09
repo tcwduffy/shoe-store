@@ -8,15 +8,15 @@
         <script>
             var cart = JSON.parse(localStorage.getItem("Cart") || "[]" )
 
-            const ul = document.createElement("ul")
-            
-            for (var i = 0; i < cart.length; i++) {
-                var li = document.createElement("li")
-                li.textContent = cart[i];
-                ul.appendChild(li)
-            }
+            const list = document.createElement("ul")
 
-            document.getElementById("cartContentsList").appendChild(ul)
+            cart.forEach((cartItem) => {
+                const li = document.createElement("li")
+                li.textContent = cartItem
+                list.appendChild(li)
+            })
+
+            document.getElementById("cartContentsList").appendChild(list)
 
             if (cart.length >= 2) {
                 document.getElementById("cartStatus").textContent = `You have ${cart.length} items in your shopping cart`
