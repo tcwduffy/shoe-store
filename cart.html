@@ -12,18 +12,46 @@
 
             let ulHavvies = 0;
             let ulThongs = 0;
+            let ul = document.createElement("ul")
+            let groups = [];
 
-            cart.forEach((cartItem) => {
-                    const li = document.createElement("li")
-                    li.textContent = cartItem;
-                    if (cartItem === 'Havvies') {
-                        ulHavvies += 1; 
-                        document.getElementById("cartContentsList").textContent = `You have ${ulHavvies} ${cartItem} in your shopping cart.`
+            cart.forEach((item) => {
+                    if (groups.find(group => group.name === item)) {
+                        groups.find(group => group.name === item).quantity++; //Else, increment just quantity
                     } else {
-                        ulThongs += 1;
-                        document.getElementById("cartContentsList2").textContent = `You have ${ulThongs} ${cartItem} in your shopping cart.`
-                    }     
-            });
+                    groups.push({name: item, quantity: 1})
+                    }
+                    //if item isn't in groups, push name and quantity
+            })
+
+            //try get it working with group object
+            //let groups = {Havvies: 4, Thongs: 3}
+
+
+
+            // let groups = [{name: "Havvies", quantity: 3},{name: "Thongs", quantity: 2}];
+
+            groups.forEach((group) => {
+                const li = document.createElement("li")
+                li.textContent = `You have ${group.quantity} ${group.name} in your shopping cart.`
+                ul.append(li)
+            })
+
+            document.getElementById("cartContentsList").append(ul);
+
+            
+
+            // cart.forEach((cartItem) => {
+            //         const li = document.createElement("li")
+            //         li.textContent = cartItem;
+            //         if (cartItem === 'Havvies') {
+            //             ulHavvies += 1; 
+            //             document.getElementById("cartContentsList").textContent = `You have ${ulHavvies} ${cartItem} in your shopping cart.`
+            //         } else {
+            //             ulThongs += 1;
+            //             document.getElementById("cartContentsList2").textContent = `You have ${ulThongs} ${cartItem} in your shopping cart.`
+            //         }     
+            // });
 
             if (cart.length >= 2) {
                 document.getElementById("cartStatus").textContent = `You have ${cart.length} items in your shopping cart`
