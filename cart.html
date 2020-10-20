@@ -3,20 +3,27 @@
     <body>
         <h1 id="cartStatus">You have no items in your shopping cart</h1>
         <div id="cartContentsList"></div>
+        <div id="cartContentsList2"></div>
+        <div id="elements"></div>
         <a href="index.html">Continue Shopping</a>
 
         <script>
-            var cart = JSON.parse(localStorage.getItem("Cart") || "[]" )
+            var cart = JSON.parse(localStorage.getItem("Cart")) || [];
 
-            const list = document.createElement("ul")
+            let ulHavvies = 0;
+            let ulThongs = 0;
 
             cart.forEach((cartItem) => {
-                const li = document.createElement("li")
-                li.textContent = cartItem
-                list.appendChild(li)
-            })
-
-            document.getElementById("cartContentsList").appendChild(list)
+                    const li = document.createElement("li")
+                    li.textContent = cartItem;
+                    if (cartItem === 'Havvies') {
+                        ulHavvies += 1; 
+                        document.getElementById("cartContentsList").textContent = `You have ${ulHavvies} ${cartItem} in your shopping cart.`
+                    } else {
+                        ulThongs += 1;
+                        document.getElementById("cartContentsList2").textContent = `You have ${ulThongs} ${cartItem} in your shopping cart.`
+                    }     
+            });
 
             if (cart.length >= 2) {
                 document.getElementById("cartStatus").textContent = `You have ${cart.length} items in your shopping cart`
