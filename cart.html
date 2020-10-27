@@ -3,8 +3,8 @@
     <body>
         <h1 id="cartStatus">You have no items in your shopping cart</h1>
         <div id="cartContentsList"></div>
-        <div id="cartContentsList2"></div>
-        <div id="elements"></div>
+        <div>Your total is £<div id="price">20</div></div>
+
         <a href="index.html">Continue Shopping</a>
 
         <script>
@@ -15,6 +15,8 @@
             let ul = document.createElement("ul")
             let groups =[];
             let groupsObject = {};
+            let havviesPrice = 12.95;
+            let thongsPrice = 19.75;
 
             cart.forEach((item) => {
                     if (groups.find(group => group.name === item)) {
@@ -47,6 +49,13 @@
              } else if (cart.length === 1) {
                 document.getElementById("cartStatus").textContent = "You have 1 item in your shopping cart"
              }
+
+             let thongsQuantity = groups.find(group => group.name === "Thongs").quantity
+             let havviesQuantity = groups.find(group => group.name === "Havvies").quantity
+
+
+             document.getElementById("price").textContent = (thongsPrice * thongsQuantity) + (havviesPrice * havviesQuantity)
+
 
         </script>
     </body> 
