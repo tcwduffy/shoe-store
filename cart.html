@@ -13,23 +13,26 @@
             let ulHavvies = 0;
             let ulThongs = 0;
             let ul = document.createElement("ul")
-            let groups = [];
+            let groups =[];
+            let groupsObject = {};
 
             cart.forEach((item) => {
                     if (groups.find(group => group.name === item)) {
-                        groups.find(group => group.name === item).quantity++; //Else, increment just quantity
+                        groups.find(group => group.name === item).quantity++;
                     } else {
                     groups.push({name: item, quantity: 1})
                     }
-                    //if item isn't in groups, push name and quantity
             })
 
-            //try get it working with group object
-            //let groups = {Havvies: 4, Thongs: 3}
+            cart.forEach((item) => {
+                if (groupsObject[item]) {
+                    groupsObject[item]++    
+                } else {
+                    groupsObject[item] = 1;
+                }
+            })
 
-
-
-            // let groups = [{name: "Havvies", quantity: 3},{name: "Thongs", quantity: 2}];
+            console.log(groupsObject)
 
             groups.forEach((group) => {
                 const li = document.createElement("li")
@@ -39,27 +42,12 @@
 
             document.getElementById("cartContentsList").append(ul);
 
-            
-
-            // cart.forEach((cartItem) => {
-            //         const li = document.createElement("li")
-            //         li.textContent = cartItem;
-            //         if (cartItem === 'Havvies') {
-            //             ulHavvies += 1; 
-            //             document.getElementById("cartContentsList").textContent = `You have ${ulHavvies} ${cartItem} in your shopping cart.`
-            //         } else {
-            //             ulThongs += 1;
-            //             document.getElementById("cartContentsList2").textContent = `You have ${ulThongs} ${cartItem} in your shopping cart.`
-            //         }     
-            // });
-
             if (cart.length >= 2) {
                 document.getElementById("cartStatus").textContent = `You have ${cart.length} items in your shopping cart`
              } else if (cart.length === 1) {
                 document.getElementById("cartStatus").textContent = "You have 1 item in your shopping cart"
              }
 
-             //group items together with quantity
         </script>
     </body> 
 </html>
