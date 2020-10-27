@@ -30,32 +30,25 @@
                     <br>
                 </div>    
 
+                <div class="item">
+                    <br>
+                    <label>Flip Flops</label>
+                    <p>PRICE: £15.75</p>
+                    <button onClick="addToCart('Flip Flops')">Add to Cart</button>
+                    <br>
+                </div> 
+
             </div> 
 
         </div>  
         <script type="text/javascript">
                   
 
-            var numberOfItemsHavvies = 0;
-            var numberOfItemsThongs = 0;
-
             function addToCart (item) {
- 
-                
-                if (item === 'Havvies') {
-                    numberOfItemsHavvies++
-                } else {
-                    numberOfItemsThongs++
-                } 
-
-                console.log('Havvies', numberOfItemsHavvies);
-                console.log('Thongs', numberOfItemsThongs);
                 const list = JSON.parse(localStorage.getItem("Cart") || "[]" )
                 list.push(item);
                 localStorage.setItem("Cart", JSON.stringify(list))
             }
-
-
 
             const buttons = document.querySelectorAll('a');
             buttons.forEach(btn => {

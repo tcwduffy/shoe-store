@@ -10,13 +10,9 @@
         <script>
             var cart = JSON.parse(localStorage.getItem("Cart")) || [];
 
-            let ulHavvies = 0;
-            let ulThongs = 0;
             let ul = document.createElement("ul")
             let groups =[];
             let groupsObject = {};
-            let havviesPrice = 12.95;
-            let thongsPrice = 19.75;
 
             cart.forEach((item) => {
                     if (groups.find(group => group.name === item)) {
@@ -50,11 +46,14 @@
                 document.getElementById("cartStatus").textContent = "You have 1 item in your shopping cart"
              }
 
+             let havviesPrice = 12.95;
+             let thongsPrice = 19.75;
+             let flipflopsPrice = 15.75;
              let thongsQuantity = groups.find(group => group.name === "Thongs").quantity
              let havviesQuantity = groups.find(group => group.name === "Havvies").quantity
+             let flipflopsQuantity = groups.find(group => group.name === "Flip Flops").quantity
 
-
-             document.getElementById("price").textContent = (thongsPrice * thongsQuantity) + (havviesPrice * havviesQuantity)
+             document.getElementById("price").textContent = (thongsPrice * thongsQuantity) + (havviesPrice * havviesQuantity) + (flipflopsPrice * flipflopsQuantity)
 
 
         </script>
