@@ -33,7 +33,7 @@
                 <div class="item">
                     <br>
                     <label>Flip Flops</label>
-                    <p>PRICE: £15.75</p>
+                    <p>PRICE: £<span id="flipFlopsPrice"></span></p>
                     <button onClick="addToCart('Flip Flops')">Add to Cart</button>
                     <br>
                 </div> 
@@ -43,6 +43,9 @@
         </div>  
         <script type="text/javascript">
                   
+            const flipFlopsPrice = 14.75; 
+            document.getElementById("flipFlopsPrice").textContent = flipFlopsPrice;  
+            localStorage.setItem("flipFlopsPrice", flipFlopsPrice)   
 
             function addToCart (item) {
                 const list = JSON.parse(localStorage.getItem("Cart") || "[]" )
