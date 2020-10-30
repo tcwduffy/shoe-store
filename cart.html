@@ -4,7 +4,7 @@
         <h1 id="cartStatus">You have no items in your shopping cart</h1>
         <div id="cartContentsList"></div>
         <div>Your total is £<span id="price"></span></div>
-        <div><button onclick="deleteCart('cart')">Empty Cart</button></div>
+        <div><button onclick="emptyCart('cart')">Empty Cart</button></div>
 
         <a href="index.html">Continue Shopping</a>
 
@@ -49,8 +49,8 @@
                 document.getElementById("cartStatus").textContent = "You have no items in your shopping cart"  
              }
 
-             let havviesPrice = 12.95;
-             let thongsPrice = 19.75;
+             let havviesPrice = localStorage.getItem("havviesPrice");
+             let thongsPrice = localStorage.getItem("thongsPrice")
              let flipFlopsPrice = localStorage.getItem("flipFlopsPrice"); 
 
              let thongsQuantity = groups.find(group => group.name === "Thongs")?.quantity || 0;
@@ -59,11 +59,14 @@
 
              document.getElementById("price").textContent = (thongsPrice * thongsQuantity) + (havviesPrice * havviesQuantity) + (flipFlopsPrice * flipflopsQuantity)
 
-             function deleteCart (cart) {
-                 localStorage.clear("Cart");
+             function emptyCart (cart) {
+                 localStorage.removeItem("Cart");
+                 document.getElementById("cartStatus").textContent = "You have no items in your shopping cart";
+                 ul = 0;
              }   
 
-             //think about to make price dynamic on both pages
+             //adding new shoe in index html only once
+             
 
 
         </script>

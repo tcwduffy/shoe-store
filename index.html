@@ -17,7 +17,7 @@
                 <div class="item">
                     <br>
                     <label>Havvies</label>
-                    <p>PRICE: £12.95</p>
+                    <p>PRICE: £<span id="havviesPrice"></span></p>
                     <button onClick="addToCart('Havvies')">Add to Cart</button>
                     <br>
                 </div>  
@@ -25,7 +25,7 @@
                 <div class="item">
                     <br>
                     <label>Thongs</label>
-                    <p>PRICE: £19.75</p>
+                    <p>PRICE: £<span id="thongsPrice"></span></p>
                     <button onClick="addToCart('Thongs')">Add to Cart</button>
                     <br>
                 </div>    
@@ -42,6 +42,14 @@
 
         </div>  
         <script type="text/javascript">
+
+            const havviesPrice = 12.95;
+            document.getElementById("havviesPrice").textContent = havviesPrice;
+            localStorage.setItem("havviesPrice", havviesPrice)
+
+            const thongsPrice = 19.75;
+            document.getElementById("thongsPrice").textContent = thongsPrice;
+            localStorage.setItem("thongsPrice", thongsPrice)
                   
             const flipFlopsPrice = 14.75; 
             document.getElementById("flipFlopsPrice").textContent = flipFlopsPrice;  
