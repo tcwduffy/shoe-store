@@ -16,8 +16,8 @@
             <div class="items"></div>
                 <div class="item">
                     <br>
-                    <label>Havvies</label>
-                    <p>PRICE: £<span id="havviesPrice"></span></p>
+                    <label id="Havvies"><span id="item1">`This shoe is called ${item1}`</span></label>
+                    <p>PRICE: £<span id="item1"></span></p>
                     <button onClick="addToCart('Havvies')">Add to Cart</button>
                     <br>
                 </div>  
@@ -40,20 +40,22 @@
 
             </div> 
 
-        </div>  
+        </div>   
+        <br><br>
+
         <script type="text/javascript">
 
-            const havviesPrice = 12.95;
-            document.getElementById("havviesPrice").textContent = havviesPrice;
-            localStorage.setItem("havviesPrice", havviesPrice)
+            let prices = {Havvies: 12.95, Thongs: 19.75, ["Flip Flops"]: 14.75}
+            localStorage.setItem("prices", JSON.stringify(prices))
 
-            const thongsPrice = 19.75;
-            document.getElementById("thongsPrice").textContent = thongsPrice;
-            localStorage.setItem("thongsPrice", thongsPrice)
+            document.getElementById("item1").textContent = prices[0]
+            // document.getElementById("item1").textContent = prices.Havvies;
+     
+            // document.getElementById("havvies").textContent = prices[0];
+
+            document.getElementById("thongsPrice").textContent = prices.Thongs;
                   
-            const flipFlopsPrice = 14.75; 
-            document.getElementById("flipFlopsPrice").textContent = flipFlopsPrice;  
-            localStorage.setItem("flipFlopsPrice", flipFlopsPrice)   
+            document.getElementById("flipFlopsPrice").textContent = prices["Flip Flops"]   
 
             function addToCart (item) {
                 const list = JSON.parse(localStorage.getItem("Cart") || "[]" )

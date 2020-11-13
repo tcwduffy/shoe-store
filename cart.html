@@ -13,7 +13,9 @@
 
             let ul = document.createElement("ul")
             let groups =[];
-            let groupsObject = {};
+            let price = 0;
+            let prices = JSON.parse(localStorage.getItem("prices"))
+            
 
             cart.forEach((item) => {
                     if (groups.find(group => group.name === item)) {
@@ -23,20 +25,12 @@
                     }
             })
 
-            cart.forEach((item) => {
-                if (groupsObject[item]) {
-                    groupsObject[item]++    
-                } else {
-                    groupsObject[item] = 1;
-                }
-            })
-
-            console.log(groupsObject)
-
             groups.forEach((group) => {
                 const li = document.createElement("li")
                 li.textContent = `You have ${group.quantity} ${group.name} in your shopping cart.`
                 ul.append(li)
+                price += group.quantity * prices[group.name];
+                document.getElementById("price").textContent = price;
             })
 
             document.getElementById("cartContentsList").append(ul);
@@ -48,27 +42,16 @@
              } else {
                 document.getElementById("cartStatus").textContent = "You have no items in your shopping cart"  
              }
-
-             let havviesPrice = localStorage.getItem("havviesPrice");
-             let thongsPrice = localStorage.getItem("thongsPrice")
-             let flipFlopsPrice = localStorage.getItem("flipFlopsPrice"); 
-
-             let thongsQuantity = groups.find(group => group.name === "Thongs")?.quantity || 0;
-             let havviesQuantity = groups.find(group => group.name === "Havvies")?.quantity || 0;
-             let flipflopsQuantity = groups.find(group => group.name === "Flip Flops")?.quantity || 0;
-
-             document.getElementById("price").textContent = (thongsPrice * thongsQuantity) + (havviesPrice * havviesQuantity) + (flipFlopsPrice * flipflopsQuantity)
-
+         
              function emptyCart (cart) {
                  localStorage.removeItem("Cart");
                  document.getElementById("cartStatus").textContent = "You have no items in your shopping cart";
-                 ul = 0;
-             }   
+                 document.getElementById("price").textContent = 0;
+                 document.getElementById("cartContentsList").textContent = "";
+             }
 
              //adding new shoe in index html only once
              
-
-
         </script>
     </body> 
 </html>
