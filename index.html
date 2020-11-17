@@ -18,7 +18,7 @@
                     <br>
                     <label><span id="item1"></span></label>
                     <p>PRICE: £<span id="item1price"></span></p>
-                    <button onClick="addToCart('Havvies')">Add to Cart</button>
+                    <button onClick="addToCart('item1')">Add to Cart</button>
                     <br>
                 </div>  
         
@@ -26,7 +26,7 @@
                     <br>
                     <label><span id="item2"></span></label>
                     <p>PRICE: £<span id="item2price"></span></p>
-                    <button onClick="addToCart('Thongs')">Add to Cart</button>
+                    <button onClick="addToCart('item2')">Add to Cart</button>
                     <br>
                 </div>    
 
@@ -34,7 +34,7 @@
                     <br>
                     <label><span id="item3"></span></label>
                     <p>PRICE: £<span id="item3price"></span></p>
-                    <button onClick="addToCart('Flip Flops')">Add to Cart</button>
+                    <button onClick="addToCart('item3')">Add to Cart</button>
                     <br>
                 </div> 
 
@@ -45,7 +45,7 @@
 
         <script type="text/javascript">
 
-            let prices = {Havvies: 12.95, Thongs: 19.75, ["Flip Flops"]: 14.75}
+            let prices = {Havvies: 110.55, Thongs: 19.75, ["Flip Flops"]: 14.75}
             localStorage.setItem("prices", JSON.stringify(prices))
 
             let item1 = Object.keys(prices).slice(0, 1);
@@ -63,7 +63,8 @@
             let item3price = Object.values(prices).slice(2, 3);
             document.getElementById("item3price").textContent = item3price;    
             
-            function addToCart (item) {
+            function addToCart (spanId) {
+                item = document.getElementById(spanId).textContent
                 const list = JSON.parse(localStorage.getItem("Cart") || "[]" )
                 list.push(item);
                 localStorage.setItem("Cart", JSON.stringify(list))
