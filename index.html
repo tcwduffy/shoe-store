@@ -14,6 +14,17 @@
         <div class="wrapper">
 
             <div class="items"></div>
+
+                <!-- <br>
+                    <div class="testDiv">
+                        <label><span id="item"></span></label>
+                        <p>PRICE: £<span id="itemprice"></span></p>
+                        <button onClick="addToCart('item')">Add to Cart</button>
+                        <br>
+                </div> -->
+
+                <!-- <br>
+
                 <div class="item">
                     <br>
                     <label><span id="item1"></span></label>
@@ -36,7 +47,15 @@
                     <p>PRICE: £<span id="item3price"></span></p>
                     <button onClick="addToCart('item3')">Add to Cart</button>
                     <br>
-                </div> 
+                </div>
+                
+                <div class="item">
+                    <br>
+                    <label><span id="item4"></span></label>
+                    <p>PRICE: £<span id="item4price"></span></p>
+                    <button onClick="addToCart('item4')">Add to Cart</button>
+                    <br>
+                </div>  -->
 
             </div> 
 
@@ -45,28 +64,57 @@
 
         <script type="text/javascript">
 
-            let prices = {Havvies: 110.55, Thongs: 19.75, ["Flip Flops"]: 14.75}
+            let prices = {Havvies: 110.55, Thongs: 19.75, ["Flip Flops"]: 14.75, Jandals: 43.21}
             localStorage.setItem("prices", JSON.stringify(prices))
 
-            let item1 = Object.keys(prices).slice(0, 1);
-            document.getElementById("item1").textContent = item1;
-            let item1price = Object.values(prices).slice(0, 1);
-            document.getElementById("item1price").textContent = item1price;
+            let list = Object.entries(prices);
+         
 
-            let item2 = Object.keys(prices).slice(1, 2);
-            document.getElementById("item2").textContent = item2;
-            let item2price = Object.values(prices).slice(1, 2);
-            document.getElementById("item2price").textContent = item2price;
+            list.forEach((item) => {
+                let newDiv = document.createElement("div")
+                newDiv.className = "item"
+                let newLabel = document.createElement("label")
+                let newPara = document.createElement("p")
+                let newButton = document.createElement("button")
+                newButton.appendChild(document.createTextNode("Add to Cart"))
+                newButton.addEventListener("click", () => addToCart(item[0]));
+                let name = document.createTextNode(item[0]);
+                let price = document.createTextNode(item[1]);
+               
+                newDiv.appendChild(newLabel)
+                newLabel.appendChild(name)
+                newPara.appendChild(price)
+                newDiv.appendChild(newPara)
+                newDiv.appendChild(newButton)
+                document.body.append(newDiv)
+            });
 
-            let item3 = Object.keys(prices).slice(2, 3);
-            document.getElementById("item3").textContent = item3;
-            let item3price = Object.values(prices).slice(2, 3);
-            document.getElementById("item3price").textContent = item3price;    
+            //create element - add class, add id, DOM, 
+
+            //convert object to array
+            //use forEach to create item variables and html for each item in the array
+            //when adding/removing something to prices, dont have to write any more code. Bit by bit make it less work. Notice patterns, extract duplication.
+
+            // let item1 = Object.keys(prices)[0];
+            // document.getElementById("item1").textContent = item1;
+            // document.getElementById("item1price").textContent = prices[item1];
+
+            // let item2 = Object.keys(prices)[1]
+            // document.getElementById("item2").textContent = item2;
+            // document.getElementById("item2price").textContent = prices[item2];
+
+            // let item3 = Object.keys(prices)[2]
+            // document.getElementById("item3").textContent = item3;
+            // document.getElementById("item3price").textContent = prices[item3];    
+
+            // let item4 = Object.keys(prices)[3]
+            // document.getElementById("item4").textContent = item4;
+            // document.getElementById("item4price").textContent = prices[item4];
             
-            function addToCart (spanId) {
-                item = document.getElementById(spanId).textContent
+            function addToCart (itemName) {
+                console.log("Hello")
                 const list = JSON.parse(localStorage.getItem("Cart") || "[]" )
-                list.push(item);
+                list.push(itemName);
                 localStorage.setItem("Cart", JSON.stringify(list))
             }
 
