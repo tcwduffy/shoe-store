@@ -2,69 +2,35 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Luke and Tom's Online Store</title>
+        <title>Zeally Soles</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
     </head>
      <body>
-
+         <div class="head-banner"></div>
+        <nav>
+            <label class="logo">Zeally Soles</label>
+            <ul>
+                <li><a href="#">SHOP</a></li>
+                <li><a href="#">Help</a></li>
+                <li><a href="#">Sign In</a></li>
+                <li><a href="#">Register</a></li>
+                <li><a href="#">Cart Logo</a></li>
+                
+            </ul>
+        </nav>
+        
         <a href="cart.html">View Shopping Cart</a>
-        <link rel="stylesheet" href="style.css">
-
-
-            
-        <div class="wrapper">
+            <div class="wrapper">
 
             <div class="items"></div>
-
-                <!-- <br>
-                    <div class="testDiv">
-                        <label><span id="item"></span></label>
-                        <p>PRICE: £<span id="itemprice"></span></p>
-                        <button onClick="addToCart('item')">Add to Cart</button>
-                        <br>
-                </div> -->
-
-                <!-- <br>
-
-                <div class="item">
-                    <br>
-                    <label><span id="item1"></span></label>
-                    <p>PRICE: £<span id="item1price"></span></p>
-                    <button onClick="addToCart('item1')">Add to Cart</button>
-                    <br>
-                </div>  
-        
-                <div class="item">
-                    <br>
-                    <label><span id="item2"></span></label>
-                    <p>PRICE: £<span id="item2price"></span></p>
-                    <button onClick="addToCart('item2')">Add to Cart</button>
-                    <br>
-                </div>    
-
-                <div class="item">
-                    <br>
-                    <label><span id="item3"></span></label>
-                    <p>PRICE: £<span id="item3price"></span></p>
-                    <button onClick="addToCart('item3')">Add to Cart</button>
-                    <br>
-                </div>
-                
-                <div class="item">
-                    <br>
-                    <label><span id="item4"></span></label>
-                    <p>PRICE: £<span id="item4price"></span></p>
-                    <button onClick="addToCart('item4')">Add to Cart</button>
-                    <br>
-                </div>  -->
-
-            </div> 
 
         </div>   
         <br><br>
 
         <script type="text/javascript">
 
-            let prices = {Havvies: 110.55, Thongs: 19.75, ["Flip Flops"]: 14.75, Jandals: 43.21}
+            let prices = {Havvies: 110.55, Thongs: 19.75, ["Flip Flops"]: 14.75, Jandals: 43.21, Gumboots: 23.21}
             localStorage.setItem("prices", JSON.stringify(prices))
 
             let list = Object.entries(prices);
@@ -88,28 +54,6 @@
                 newDiv.appendChild(newButton)
                 document.body.append(newDiv)
             });
-
-            //create element - add class, add id, DOM, 
-
-            //convert object to array
-            //use forEach to create item variables and html for each item in the array
-            //when adding/removing something to prices, dont have to write any more code. Bit by bit make it less work. Notice patterns, extract duplication.
-
-            // let item1 = Object.keys(prices)[0];
-            // document.getElementById("item1").textContent = item1;
-            // document.getElementById("item1price").textContent = prices[item1];
-
-            // let item2 = Object.keys(prices)[1]
-            // document.getElementById("item2").textContent = item2;
-            // document.getElementById("item2price").textContent = prices[item2];
-
-            // let item3 = Object.keys(prices)[2]
-            // document.getElementById("item3").textContent = item3;
-            // document.getElementById("item3price").textContent = prices[item3];    
-
-            // let item4 = Object.keys(prices)[3]
-            // document.getElementById("item4").textContent = item4;
-            // document.getElementById("item4price").textContent = prices[item4];
             
             function addToCart (itemName) {
                 console.log("Hello")
